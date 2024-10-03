@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생 성적 관리 웹 - 내 정보</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+  </head>
+  <body>
+
+    <header class="header-container">
+      <div class="admin-header-container">
+        <a href="#" class="header-item">🎓</a>
+        <a href="#" class="header-item">내 정보</a>
+        <a href="#" class="header-item">교수자 조회</a>
+        <a href="#" class="header-item">학생 조회</a>
+        <a href="#" class="header-item">교수자 등록</a>
+        <a href="#" class="header-item">학생 등록</a>
+        <a href="#" class="header-item">개설 강의</a>
+        <a href="#" class="header-item">로그아웃</a>
+      </div>    
+    </header>
+  
+    <main>
+      <div id="wrap">
+        <div id="page-center-container">
+          <div id="admin-info-container">
+            <div class="grid-item">
+              
+              <!-- 내 정보 컴포넌트 -->
+              <div class="page-title">내 정보</div>
+              <table>
+                <tr>
+                  <td rowspan="5" style="font-size: 130px;">
+                    🧑🏻‍💻
+                  </td>
+                  <td><b>[관리자 이름]</b></td>
+                </tr>
+                <tr>
+                  <td><b>관리자 번호: </b>[관리자 번호]</td>
+                </tr>
+                <tr>
+                  <td><b>관리자 전화번호: </b>[관리자 전화번호]</td>
+                </tr>
+                <tr>
+                  <td><b>관리자 업무: </b>[관리자 업무]</td>
+                </tr>
+                <tr>
+                  <td><a href="#">📝수정 하기</a></td>
+                </tr>
+              </table>
+              
+            </div>
+
+            <div class="grid-item">
+
+              <!-- 관리자 문의 내역 컴포넌트 -->
+               <div class="page-title">관리자 문의 내역</div>
+              <table id="w-table">
+                <tr>
+                  <th>문의 번호</th>
+                  <th>문의자 직책</th>
+                  <th>문의자 이름</th>
+                  <th>문의 제목</th>
+                  <th>문의 날짜</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>학생</td>
+                  <td>이름이름</td>
+                  <td><a class="a-btn" href="#">수업 질문</a></td>
+                  <td>2024-10-02</td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        학생 성적 관리 웹 사이트<br />
+        제작: 서승권<br />
+        문의: <a href="mailto:seoseuo@naver.com">seoseuo@naver.com</a><br />
+        GitHub:
+        <a href="https://github.com/seoseuo/SGMW" target="_blank">https://github.com/seoseuo/SGMW</a>
+      </p>
+    </footer>
+
+  </body>
+</html>

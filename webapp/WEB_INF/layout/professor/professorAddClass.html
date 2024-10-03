@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학생 성적 관리 웹 - 강의 추가</title>
+  <link rel="stylesheet" href="../../../css/style.css" />
+</head>
+
+<body>
+
+  <!-- 교수자 헤더 -->
+
+  <header class="header-container">
+    <div class="admin-header-container">
+      <a href="#" class="header-item">🎓</a>
+      <a href="#" class="header-item">내 정보</a>
+      <a href="#" class="header-item">개설 강의</a>
+      <a href="#" class="header-item">관리자 문의</a>
+      <a href="#" class="header-item">로그아웃</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="wrap">
+      <div id="page-center-container">
+        <div id="admin-info-container">
+          <div class="grid-item">
+
+            <div class="page-title">강의 추가</div>
+            <!-- 내 정보 컴포넌트 -->
+            <form action="/add-class" method="POST">
+              <table>
+                <tr>
+                  <td rowspan="5" style="font-size: 130px;">
+                    📚
+                  </td>
+                  <td><b>강의 이름: </b><input class="input-edit-info" type="text" id="className" name="className"
+                      placeholder="강의 이름을 입력하세요"><br><span class="input_warn" id="className_warn"></span></td>
+
+                </tr>
+
+                <tr>
+                  <td><b>강의 학점: </b><input class="input-edit-info" type="text" id="classScore" name="classScore"
+                      placeholder="학점을 입력하세요"><br><span class="input_warn" id="classScore_warn"></span></td>
+                </tr>
+                <tr>
+                  <td><input type="submit" value="✅ 강의 추가"></td>
+                </tr>
+              </table>
+            </form>
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+    </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      학생 성적 관리 웹 사이트<br />
+      제작: 서승권<br />
+      문의: <a href="mailto:seoseuo@naver.com">seoseuo@naver.com</a><br />
+      GitHub:
+      <a href="https://github.com/seoseuo/SGMW" target="_blank">https://github.com/seoseuo/SGMW</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>
