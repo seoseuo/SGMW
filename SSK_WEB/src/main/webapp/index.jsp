@@ -20,9 +20,9 @@
                   <hr>
                 </h1>
                 <div class="menu">
-                  <a href="/studentLogin.jsp">🧑🏻‍🎓학생</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="/professorLogin.jsp">👨🏻‍🏫교수자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="/adminLogin.jsp">🧑🏻‍💻관리자</a>
+                  <a href="/toStudentLogin.do">🧑🏻‍🎓학생</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="/toProfessorLogin.do">👨🏻‍🏫교수자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="/toAdminLogin.do">🧑🏻‍💻관리자</a>
                 </div>
               </div>
         </div>

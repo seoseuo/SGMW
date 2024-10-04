@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const form = document.getElementById('UserEditUser');
+	const form = document.getElementById('editUser');
 	let focusSet = false; // 커서 이동을 한 번만 실행하도록 설정
 
 	// 폼을 제출하기 전에 데이터 입력 유효성 검사를 하기 위함.
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		
+
 
 		// 유효성 검사 실패 시 폼 제출 방지
 		if (!isValid) {

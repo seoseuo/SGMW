@@ -10,7 +10,7 @@
 <script src="<%=request.getContextPath()%>/js/adminInsertProfessor.js"></script>
 <script src="<%=request.getContextPath()%>/js/adminInsertStudent.js"></script>
 <script src="<%=request.getContextPath()%>/js/professorEditMyClassGrade.js"></script>
-<script src="<%=request.getContextPath()%>/js/UserEditUser.js"></script>
+<script src="<%=request.getContextPath()%>/js/editUser.js"></script>
 
 <!-- 각 클래스 import  -->
 

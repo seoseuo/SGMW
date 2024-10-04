@@ -22,7 +22,7 @@ public class AdminDAO {
 	private final String ADMIN_EDIT_INFO = "UPDATE ADMIN SET adminNum = ?, adminName = ? WHERE adminPhone = ?";
 
 	// 관리자 로그인 메소드.
-	public AdminVO adminLogin(AdminVO vo) {
+	public AdminVO getAdmin(AdminVO vo) {
 
 		AdminVO resultVo = null;
 

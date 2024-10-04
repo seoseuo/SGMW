@@ -24,31 +24,32 @@
 					<div class="grid-item">
 
 						<!-- 내 정보 컴포넌트 -->
-						<div class="page-title">교수자 정보 등록</div>
+						<div class="page-title">교수자 정보 등록
+						<span class="input_warn">${num_warn}</span></div>
 						<form id="adminInsertProfessor" action="/adminInsertProfessor.do" method="post">
 							<table>
 								<tr>
 									<td rowspan="6" style="font-size: 130px;">👨🏻‍🏫</td>
 									<td><b>교수자 이름: </b> <input class="input-edit-info"
-										type="text" id="name" name="name" placeholder="올바른 한글">
+										type="text" id="name" name="name" placeholder="올바른 한글" value = "${name}">
 										<br>
 									<span class="input_warn" id="name_warn"></span></td>
 								</tr>
 								<tr>
 									<td><b>교수자 교번: </b> <input class="input-edit-info"
-										type="text" id="num" name="num" placeholder="20*****">
+										type="text" id="num" name="num" placeholder="20*****" value = "${num}">
 										<br>
 									<span class="input_warn" id="num_warn"></span></td>
 								</tr>
 								<tr>
 									<td><b>교수자 전화번호: </b> <input class="input-edit-info"
 										type="text" id="phone" name="phone"
-										placeholder="010-****-****"><br> <span
+										placeholder="010-****-****" value = "${phone}"><br> <span
 										class="input_warn" id="phone_warn"></span></td>
 								</tr>
 								<tr>
 									<td><b>교수자 소속 (전공): </b> <input class="input-edit-info"
-										type="text" id="major" name="major" placeholder="**학과"><br>
+										type="text" id="major" name="major" placeholder="**학과" value = "${major}"><br>
 										<span class="input_warn" id="major_warn"></span></td>
 								</tr>
 								<tr>

@@ -20,11 +20,15 @@ public class CourseDAO {
 	private final String GET_COURSE_LIST = "SELECT c.courseNum, c.courseName, c.courseProfessorNum, c.coursePoint, "
 			+ "p.professorName AS courseProfessorName, p.professorMajor AS courseProfessorMajor " + "FROM course c "
 			+ "JOIN professor p ON c.courseProfessorNum = p.professorNum";
+
+	private final String GET_MY_COURSE = "SELECT c.courseNum, c.courseName, c.courseProfessorNum, c.coursePoint, "
+			+ "p.professorName AS courseProfessorName, p.professorMajor AS courseProfessorMajor " + "FROM course c "
+			+ "JOIN professor p ON c.courseProfessorNum = p.professorNum WHERE c.courseProfessorNum = ?";
+
 	private final String GET_COURSE = "SELECT c.courseNum, c.courseName, c.courseProfessorNum, c.coursePoint, "
 			+ "p.professorName AS courseProfessorName, p.professorMajor AS courseProfessorMajor " + "FROM course c "
 			+ "JOIN professor p ON c.courseProfessorNum = p.professorNum WHERE courseNum = ?";
 	private final String SEARCH_COURSE = "SELECT c.courseNum, c.courseName, c.courseProfessorNum, c.coursePoint, p.professorName AS courseProfessorName, p.professorMajor AS courseProfessorMajor FROM course c JOIN professor p ON c.courseProfessorNum = p.professorNum WHERE courseName LIKE ?";
-
 
 	public List<CourseVO> getCourseList() {
 //		System.out.println("getCourseList()");
@@ -132,6 +136,38 @@ public class CourseDAO {
 		}
 
 		return colist;
+	}
+
+	public List<CourseVO> getCourseList(ProfessorVO profvo) {
+		List<CourseVO> courseList = new ArrayList<CourseVO>();
+		try {
+
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(GET_MY_COURSE);
+			stmt.setString(1, profvo.getProfessorNum());
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				CourseVO covo = new CourseVO(); // CourseVO 객체 생성
+
+				covo.setCourseNum(rs.getInt("courseNum")); // 강의 번호 설정
+				covo.setCourseName(rs.getString("courseName")); // 강의 이름 설정
+				covo.setCourseProfessorNum(rs.getString("courseProfessorNum")); // 교수자 번호 설정
+				covo.setCoursePoint(rs.getInt("coursePoint")); // 강의 학점 설정
+				covo.setCourseProfessorName(rs.getString("courseProfessorName")); // 교수자 이름 설정
+				covo.setCourseProfessorMajor(rs.getString("courseProfessorMajor")); // 교수자 소속(전공) 설정
+				// 리스트에 객체 추가
+			    System.out.println(covo.getCourseName());
+				courseList.add(covo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+
+		return courseList;
 	}
 
 }

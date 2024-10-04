@@ -27,8 +27,15 @@ import com.ssk.web.controller.admin.ToAdminEditProfessorController;
 import com.ssk.web.controller.admin.ToAdminEditStudentController;
 import com.ssk.web.controller.admin.ToAdminInsertProfessorController;
 import com.ssk.web.controller.admin.ToAdminInsertStudentController;
+import com.ssk.web.controller.admin.ToAdminLoginController;
 import com.ssk.web.controller.common.LoginController; // 올바른 패키지 경로 사용
 import com.ssk.web.controller.common.LogoutController;
+import com.ssk.web.controller.professor.ProfessorEditInfoController;
+import com.ssk.web.controller.professor.ProfessorInfoController;
+import com.ssk.web.controller.professor.ToProfessorEditInfoController;
+import com.ssk.web.controller.professor.ToProfessorLoginController;
+import com.ssk.web.controller.professor.ToProfessorMainController;
+import com.ssk.web.controller.student.ToStudentLoginController;
 
 public class HandlerMapping {
 
@@ -40,6 +47,13 @@ public class HandlerMapping {
 		mappings = new HashMap<String, Controller>();
 
 		// 경로에 맞는 컨트롤러 등록
+		
+		// 관리자 로그인 이동
+		// 교수자 로그인 이동
+		// 학생 로그인 이동
+		mappings.put("/toAdminLogin.do", new ToAdminLoginController());
+		mappings.put("/toProfessorLogin.do", new ToProfessorLoginController());
+		mappings.put("/toStudentLogin.do", new ToStudentLoginController());
 
 		// 로그인
 		mappings.put("/login.do", new LoginController());
@@ -94,7 +108,22 @@ public class HandlerMapping {
 		mappings.put("/adminSearchCourse.do", new AdminSearchCourseController());
 		// 관리자 문의 정보 		
 		mappings.put("/adminGetBoard.do", new AdminGetBoardController());
+		
+		// 교수자 메인
+		mappings.put("/toProfessorMain.do", new ToProfessorMainController());
+		
+		// 교수자 정보
+		mappings.put("/professorInfo.do", new ProfessorInfoController());
+		// 교수자 정보 수정 이동
+		mappings.put("/toProfessorEditInfo.do", new ToProfessorEditInfoController());
+		// 교수자 정보 수정 
+		mappings.put("/professorEditinfo.do", new ProfessorEditInfoController());
+	
+	
+	
 	}
+	
+	
 
 	public Controller getController(String path) {
 		// Map에 등록된 Controller 중 특정 경로(path)에 해당하는 Controller를 리턴합니다.

@@ -55,7 +55,7 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
 
 		// 관리자 필터
 
-		if (uri.equals("/login.do")) {
+		if (uri.equals("/login.do") || uri.equals("/toAdminLogin.do") || uri.equals("/toProfessorLogin.do") || uri.equals("/toStudentLogin.do")) {
 			System.out.println("AuthenticationFilter 로그인");
 			chain.doFilter(request, response);
 		}

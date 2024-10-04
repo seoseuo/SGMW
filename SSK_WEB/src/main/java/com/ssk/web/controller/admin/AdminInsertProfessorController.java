@@ -1,5 +1,8 @@
 package com.ssk.web.controller.admin;
 
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,10 +16,9 @@ public class AdminInsertProfessorController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		// 입력 정보 추출
-		
 		System.out.println("교수자 정보 등록");
+
 		String num = request.getParameter("num");
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
@@ -34,23 +36,34 @@ public class AdminInsertProfessorController implements Controller {
 		profVo.setProfessorPhone(phone);
 		profVo.setProfessorMajor(major);
 		profVo.setProfessorPassword(num);
-		
+
 		HttpSession session = request.getSession();
-		
-		AdminVO advo = (AdminVO) session.getAttribute("admin"); 
+		AdminVO advo = (AdminVO) session.getAttribute("admin");
+
 		System.out.println("관리자 번호 : " + advo.getAdminNum());
-
-
-		// 정보 수정
 		ProfessorDAO profDao = new ProfessorDAO();
 
-		// db 연동 시작
-		profDao.adminInsertProfessor(profVo,advo);
+		// DB 연동 시작
+		try {
 
-		// 요청에 담기
-		request.setAttribute("professor", profVo);
+			// 교번이 중복일 때
+			profDao.adminInsertProfessor(profVo, advo);
 
-		return "admin/adminGetProfessor";
+			request.setAttribute("professor", profVo);
+
+			return "admin/adminGetProfessor";
+		} catch (SQLException e) {
+			// 오류 메세지 던지기
+ 			request.setAttribute("num_warn", "중복된 교번 입니다.");
+ 			
+ 			// 입력 값 유지 시켜주기
+ 			request.setAttribute("num", num);
+ 			request.setAttribute("name", name);
+ 			request.setAttribute("phone", phone);
+ 			request.setAttribute("major", major);
+ 			
+			return "admin/adminInsertProfessor";
+		}
+
 	}
-
 }

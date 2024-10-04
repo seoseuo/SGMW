@@ -20,10 +20,11 @@
             <hr>
           </h1>
           <form class="login-form" id="loginAdminForm" method="post" action="/login.do">
-            <input class="input-login" type="text" id="num" name="num" placeholder="학생 학번를 입력하세요.">
-            <input class="input-login" type="password" id="password" name="password" placeholder="비밀번호를 입력하세요.">
-            <span class="input_warn" id="num_warn"></span>
-            <span class="input_warn" id="password-warn"></span>
+            <input class="input-login" type="text" id="num" name="num" placeholder="학생 학번를 입력하세요." value="${num}">
+            <input class="input-login" type="password" id="password" name="password" placeholder="비밀번호를 입력하세요." value="${password}">
+            <input type="text" style="display: none;" id="position" name="position" value="professor">
+            <input type="submit"
+							style="display: none;"> <span class="input_warn">${login_warn}</span>
           </form>
         </div>
       </div>

@@ -20,6 +20,7 @@ public class ProfessorDAO {
 	private final String GET_PROFESSOR_LIST = "SELECT * FROM PROFESSOR WHERE professorAdminNum = ?";
 	private final String GET_PROFESSOR = "SELECT * FROM PROFESSOR WHERE professorNum = ?";
 	private final String ADMIN_EDIT_PROFESSOR = "UPDATE PROFESSOR SET professorName = ?, professorPhone = ?, professorMajor = ? WHERE professorNum = ?";
+	private final String EDIT_PROFESSOR = "UPDATE PROFESSOR SET professorName = ?, professorPhone = ? WHERE professorNum = ?";
 	private final String ADMIN_INSERT_PROFESSOR = "INSERT INTO PROFESSOR (professorNum, professorName, professorPhone, professorMajor, professorAdminNum, professorPassword) VALUES (?, ?, ?, ?, ?, ?)";
 	private final String SEARCH_PROFESSOR_LIST = "SELECT * FROM PROFESSOR WHERE professorNum LIKE ? AND professorAdminNum = ?";
 	private final String ADMIN_DELETE_PROFESSOR = "DELETE FROM PROFESSOR WHERE professorNum = ?";
@@ -165,7 +166,7 @@ public class ProfessorDAO {
 		return profList;
 	}
 
-	public void adminInsertProfessor(ProfessorVO profVo, AdminVO advo) {
+	public void adminInsertProfessor(ProfessorVO profVo, AdminVO advo) throws SQLException {
 		// TODO Auto-generated method stub
 
 		try {
@@ -182,8 +183,10 @@ public class ProfessorDAO {
 			System.out.println(stmt.executeUpdate() + "명의 교수자 등록 완료");
 
 		} catch (SQLException e) {
-			// TODO: handle exception
+			
+			// 교번 중복일 때 
 			e.printStackTrace();
+			throw e; 
 
 		} finally {
 			JDBCUtil.close(stmt, conn);
@@ -207,5 +210,25 @@ public class ProfessorDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 
+	}
+
+	public void editProfessor(ProfessorVO profvo) {
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(EDIT_PROFESSOR);
+
+			stmt.setString(1, profvo.getProfessorName());
+			stmt.setString(2, profvo.getProfessorPhone());
+			stmt.setString(3, profvo.getProfessorNum());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+		
 	}
 }

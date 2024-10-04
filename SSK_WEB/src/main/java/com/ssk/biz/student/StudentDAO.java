@@ -90,7 +90,7 @@ public class StudentDAO {
 				getStvo.setStudentMajor(rs.getString("studentMajor"));
 				getStvo.setStudentAdminNum(rs.getString("studentAdminNum"));
 
-				//
+
 				System.out.println(getStvo.getStudentNum() + ", " + getStvo.getStudentName());
 			}
 
@@ -169,7 +169,7 @@ public class StudentDAO {
 		return stList;
 	}
 
-	public void adminInsertStudent(StudentVO stvo, AdminVO advo) {
+	public void adminInsertStudent(StudentVO stvo, AdminVO advo) throws SQLException {
 		// TODO Auto-generated method stub
 
 		try {
@@ -186,8 +186,9 @@ public class StudentDAO {
 			System.out.println(stmt.executeUpdate() + "명의 학생 등록 완료");
 
 		} catch (SQLException e) {
-			// SQL 예외 처리
+			// 학번 중복일 때 
 			e.printStackTrace();
+			throw e; 
 		} finally {
 			// 자원 해제
 			JDBCUtil.close(stmt, conn);
