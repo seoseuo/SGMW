@@ -52,11 +52,13 @@ public class TimeCheckFilter extends HttpFilter implements Filter {
 		// pass the request along the filter chain
 		//System.out.println("---[ 사전 처리 ]---");
 		long startTime = System.currentTimeMillis();
+		
+		System.out.println("\n" + path + " 요청 처리 시작");
 		chain.doFilter(request, response);
 		long endTime = System.currentTimeMillis();
 		//System.out.println("---[ 사후 처리 ]---");
 		
-		System.out.println(path + " 요청 처리에 소요된 시간 : " + (endTime - startTime) + "(ms)초");
+		System.out.println(path + " 요청 처리에 소요된 시간 : " + (endTime - startTime) + "(ms)초\n");
 		//System.out.println("서블릿 수행에 소요된 시간 : " + (endTime - startTime) + "(ms)초");
 	}
 

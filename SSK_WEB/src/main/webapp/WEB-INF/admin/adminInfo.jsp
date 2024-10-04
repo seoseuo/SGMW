@@ -16,10 +16,6 @@
 
 	<%@ include file="/WEB-INF/layout/adminHeader.jsp"%>
 	
-	<%
-	// 세션에서 관리자 정보 가져오기.
-	AdminVO vo = (AdminVO) session.getAttribute("admin");
-	%>
 
 <main>
       <div id="wrap">

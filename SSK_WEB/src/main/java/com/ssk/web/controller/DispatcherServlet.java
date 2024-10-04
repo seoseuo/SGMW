@@ -11,10 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ssamz.biz.board.BoardDAO;
-import com.ssamz.biz.board.BoardVO;
-import com.ssamz.biz.user.UserDAO;
-import com.ssamz.biz.user.UserVO;
 
 /**
  * Servlet implementation class DispatcherServlet
@@ -32,7 +28,7 @@ public class DispatcherServlet extends HttpServlet {
 		//super.init();
 		handlerMapping = new HandlerMapping();
 		viewResolver = new ViewResolver();
-		viewResolver.setPrefix("./WEB-INF/board/");
+		viewResolver.setPrefix("./WEB-INF/");
 		viewResolver.setSuffix(".jsp");
 	}
 

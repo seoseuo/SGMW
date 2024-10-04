@@ -19,12 +19,11 @@ public class AdminDAO {
 			+ "FROM ADMIN " + "WHERE adminNum = ? ";
 
 	// 관리자 정보 수정
-	private final String ADMIN_EDIT_INFO = "UPDATE ADMIN SET adminName = ?, adminPhone = ? WHERE adminNum = ?";
+	private final String ADMIN_EDIT_INFO = "UPDATE ADMIN SET adminNum = ?, adminName = ? WHERE adminPhone = ?";
 
 	// 관리자 로그인 메소드.
 	public AdminVO adminLogin(AdminVO vo) {
 
-		System.out.println("adminLogin()");
 		AdminVO resultVo = null;
 
 		try {
@@ -56,6 +55,7 @@ public class AdminDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(ADMIN_EDIT_INFO);
+			
 			stmt.setString(1, vo.getAdminNum());
 			stmt.setString(2, vo.getAdminName());
 			stmt.setString(3, vo.getAdminPhone());

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -20,26 +20,16 @@
                   <hr>
                 </h1>
                 <div class="menu">
-                  <a href="#">🧑🏻‍🎓학생</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="#">👨🏻‍🏫교수자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="#">🧑🏻‍💻관리자</a>
+                  <a href="/studentLogin.jsp">🧑🏻‍🎓학생</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="/professorLogin.jsp">👨🏻‍🏫교수자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="/adminLogin.jsp">🧑🏻‍💻관리자</a>
                 </div>
               </div>
         </div>
       </div>
     </main>
 
-    <footer>
-      <p>
-        학생 성적 관리 웹 사이트<br />
-        제작: 서승권<br />
-        문의: <a href="mailto:seoseuo@naver.com">seoseuo@naver.com</a><br />
-        GitHub:
-        <a href="https://github.com/seoseuo/SGMW" target="_blank"
-          >https://github.com/seoseuo/SGMW</a
-        >
-      </p>
-    </footer>
+  <jsp:include page="/WEB-INF/layout/footer.jsp" />
 
   </body>
 </html>

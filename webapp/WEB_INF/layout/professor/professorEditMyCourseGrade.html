@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학생 성적 관리 웹 - 성적 입력</title>
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <script src="../../../js/professorEditMyClassGrade.js"></script>
+</head>
+
+<body>
+
+  <!-- 교수자 헤더 -->
+
+  <header class="header-container">
+    <div class="admin-header-container">
+      <a href="#" class="header-item">🎓</a>
+      <a href="#" class="header-item">내 정보</a>
+      <a href="#" class="header-item">개설 강의</a>
+      <a href="#" class="header-item">관리자 문의</a>
+      <a href="#" class="header-item">로그아웃</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="wrap">
+      <div id="page-center-container">
+        <div id="admin-info-container">
+          <div class="grid-item">
+
+            <div class="page-title">내 강의 정보</div>
+            <!-- 내 정보 컴포넌트 -->
+            <table>
+
+              <tr>
+                <td rowspan="4" style="font-size: 130px;">
+                  📚
+                </td>
+                <td><b>[강의 이름]</b></td>
+              </tr>
+              <tr>
+                <td><b>강의 교수자 : </b><a class="a-btn" href="#">[강의 교수자]</a></td>
+              </tr>
+              <tr>
+                <td><b>강의 전공 : </b>[강의 전공]</td>
+              </tr>
+              <tr>
+                <td><b>강의 학점: </b>[강의 학점]</td>
+              </tr>
+              <tr>
+              </tr>
+            </table>
+
+          </div>
+
+          <div class="grid-item">
+            <div class="page-title">성적 입력</div>
+
+
+            <div class="grid-item">
+              <div class="page-title">성적 입력</div>
+
+
+              <form id="professorEditMyClassGrade" method="post" action="#">
+                <input class="a-btn" type="submit" value="✅입력 완료">
+                <table id="w-table">
+                  <tr>
+                    <th>학생 번호</th>
+                    <th>학생 이름</th>
+                    <th>학생 전화번호</th>
+                    <th>학생 소속 (전공)</th>
+                    <th>학생 관리자</th>
+                    <th>중간고사</th>
+                    <th>기말고사</th>
+                    <th>합계</th>
+                    <th>학점</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td><a class="a-btn" href="#">홍길동</a></td>
+                    <td>010-1234-5678</td>
+                    <td>컴퓨터 공학과</td>
+                    <td>김철수</td>
+                    <td>
+                      <input class="input-edit-grade" type="text" id="middleGrade" name="middleGrade" value="[기존 점수]">
+                      <br><span class="input_warn" id="middleGrade_warn"></span>
+                    </td>
+                    <td>
+                      <input class="input-edit-grade" type="text" id="finalGrade" name="finalGrade" value="[기존 점수]">
+                      <br><span class="input_warn" id="finalGrade_warn"></span>
+                    </td>
+                    <td>175</td>
+                    <td>A</td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      학생 성적 관리 웹 사이트<br />
+      제작: 서승권<br />
+      문의: <a href="mailto:seoseuo@naver.com">seoseuo@naver.com</a><br />
+      GitHub:
+      <a href="https://github.com/seoseuo/SGMW" target="_blank">https://github.com/seoseuo/SGMW</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>

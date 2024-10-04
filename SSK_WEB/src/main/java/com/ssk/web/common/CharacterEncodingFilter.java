@@ -64,7 +64,7 @@ public class CharacterEncodingFilter extends HttpFilter implements Filter {
 	 */
 	public void init(FilterConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		encoding = config.getInitParameter("boardEncoding");
+		encoding = config.getInitParameter("SGMWEncoding");
 	}
 
 }

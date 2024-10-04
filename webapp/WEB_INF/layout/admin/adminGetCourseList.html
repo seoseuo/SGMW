@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학생 성적 관리 웹 - 개설 강의</title>
+  <link rel="stylesheet" href="../../../css/style.css" />
+</head>
+
+<body>
+
+  <header class="header-container">
+    <div class="admin-header-container">
+      <a href="#" class="header-item">🎓</a>
+      <a href="#" class="header-item">내 정보</a>
+      <a href="#" class="header-item">교수자 조회</a>
+      <a href="#" class="header-item">학생 조회</a>
+      <a href="#" class="header-item">교수자 등록</a>
+      <a href="#" class="header-item">학생 등록</a>
+      <a href="#" class="header-item">개설 강의</a>
+      <a href="#" class="header-item">로그아웃</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="wrap">
+      <div id="page-center-container">
+        <div id="admin-info-container">
+          <div class="grid-item">
+
+            <div class="page-title">강의 검색</div>
+
+            <form method="post" action="/#.do">
+              <input class="input-login" type="text" id="num" name="num" placeholder="학생의 학번을 입력하세요.">
+            </form>
+
+          </div>
+
+          <div class="grid-item">
+
+            <div class="page-title">개설 강의</div>
+
+            <table id="w-table">
+              <tr>
+                <th>강의 번호</th>
+                <th>강의 이름</th>
+                <th>강의 교수자 번호</th>
+                <th>강의 교수자 소속 (전공)</th>
+                <th>강의 학점</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td><a class="a-btn" href="#">컴퓨터 과학 개론</a></td>
+                <td>12345</td>
+                <td>컴퓨터 공학과</td>
+                <td>3</td>
+              </tr>
+            </table>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      학생 성적 관리 웹 사이트<br />
+      제작: 서승권<br />
+      문의: <a href="mailto:seoseuo@naver.com">seoseuo@naver.com</a><br />
+      GitHub:
+      <a href="https://github.com/seoseuo/SGMW" target="_blank">https://github.com/seoseuo/SGMW</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>
