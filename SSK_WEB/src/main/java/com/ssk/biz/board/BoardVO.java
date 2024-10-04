@@ -10,4 +10,17 @@ public class BoardVO {
     private String boardContents;    // 문의 내용
     private String boardToNum;          // 문의 할 관리자 번호, 교수자 교번
     private String boardDate;        // 문의 일자
+    
+    // vo 객체에서만 사용하는 문의자 이름 , 직책
+    private String boardName;
+    private String boardPosition;
+    
+    public void setBoardPosition(String boardFromNum) {
+    	if(boardFromNum.length()==8) {
+    		this.boardPosition="학생";
+    	}
+    	else {
+    		this.boardPosition="교수자";
+    	}
+    }
 }

@@ -8,6 +8,7 @@ import com.ssk.web.controller.admin.AdminDeleteProfessorController;
 import com.ssk.web.controller.admin.AdminEditInfoController;
 import com.ssk.web.controller.admin.AdminEditProfessorController;
 import com.ssk.web.controller.admin.AdminEditStudentController;
+import com.ssk.web.controller.admin.AdminGetBoardController;
 import com.ssk.web.controller.admin.AdminGetCourseController;
 import com.ssk.web.controller.admin.AdminGetCourseListController;
 import com.ssk.web.controller.admin.AdminGetProfessorController;
@@ -18,6 +19,7 @@ import com.ssk.web.controller.admin.AdminInfoController;
 import com.ssk.web.controller.admin.AdminInsertProfessorController;
 import com.ssk.web.controller.admin.AdminInsertStudentController;
 import com.ssk.web.controller.admin.AdminMainController;
+import com.ssk.web.controller.admin.AdminSearchCourseController;
 import com.ssk.web.controller.admin.AdminSearchProfessorController;
 import com.ssk.web.controller.admin.AdminSearchStudentController;
 import com.ssk.web.controller.admin.ToAdminEditInfoController;
@@ -81,13 +83,17 @@ public class HandlerMapping {
 		// 교수자 등록
 		mappings.put("/adminInsertStudent.do", new AdminInsertStudentController());
 		// 교수자 정보 삭제
-		mappings.put("/adminDeleteProfessor.do", new AdminDeleteProfessorController());		
-		// 교수자 정보 삭제 
+		mappings.put("/adminDeleteProfessor.do", new AdminDeleteProfessorController());
+		// 교수자 정보 삭제
 		mappings.put("/adminDeleteStudent.do", new AdminDeleteProfessorController());
 		// 강의 목록
 		mappings.put("/adminGetCourseList.do", new AdminGetCourseListController());
 		// 강의 정보
 		mappings.put("/adminGetCourse.do", new AdminGetCourseController());
+		// 강의 검색
+		mappings.put("/adminSearchCourse.do", new AdminSearchCourseController());
+		// 관리자 문의 정보 		
+		mappings.put("/adminGetBoard.do", new AdminGetBoardController());
 	}
 
 	public Controller getController(String path) {

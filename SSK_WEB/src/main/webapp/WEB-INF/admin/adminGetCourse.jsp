@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"
 	errorPage="errors/error.jsp"%>
 
+<%
+System.out.println("adminGetCourse.jsp");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -16,7 +19,6 @@
 
 	<%@ include file="/WEB-INF/layout/adminHeader.jsp"%>
 
-
 	<main>
 		<div id="wrap">
 			<div id="page-center-container">
@@ -24,21 +26,20 @@
 					<div class="grid-item">
 
 						<div class="page-title">강의 정보</div>
-						<!-- 내 정보 컴포넌트 -->
 						<table>
-
 							<tr>
 								<td rowspan="5" style="font-size: 130px;">📚</td>
-								<td><b>[강의 이름]</b></td>
+								<td><b>${course.courseName}</b></td>
 							</tr>
 							<tr>
-								<td><b>강의 교수자 : </b><a class="a-btn" href="#">[강의 교수자]</a></td>
+								<td><b>강의 교수자 : </b><a class="a-btn"
+									href="/adminGetProfessor.do?professorNum=${course.courseProfessorNum}">${course.courseProfessorName}</a></td>
 							</tr>
 							<tr>
-								<td><b>강의 전공 : </b>[강의 전공]</td>
+								<td><b>강의 전공 : </b>${course.courseProfessorMajor}</td>
 							</tr>
 							<tr>
-								<td><b>강의 학점: </b>[강의 학점]</td>
+								<td><b>강의 학점: </b>${course.coursePoint}</td>
 							</tr>
 						</table>
 
@@ -53,36 +54,34 @@
 								<th>학생 이름</th>
 								<th>학생 전화번호</th>
 								<th>학생 소속 (전공)</th>
-								<th>학생 관리자</th>
 								<th>중간고사</th>
 								<th>기말고사</th>
 								<th>합계</th>
 								<th>학점</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td><a class="a-btn" href="#">홍길동</a></td>
-								<td>010-1234-5678</td>
-								<td>컴퓨터 공학과</td>
-								<td>김철수</td>
-								<td>85</td>
-								<td>90</td>
-								<td>175</td>
-								<td>A</td>
-							</tr>
+
+							<c:forEach var="enrollment" items="${enrollmentList}">
+								<tr>
+									<td>${enrollment.enrollmentStudentNum}</td>
+									<td><a class="a-btn"
+										href="/adminGetStudent.do?studentNum=${enrollment.enrollmentStudentNum}">${enrollment.enrollmentStudentName}</a></td>
+									<td>${enrollment.enrollmentStudentPhone}</td>
+									<td>${enrollment.enrollmentStudentMajor}</td>
+									<td>${enrollment.enrollmentMiddle}</td>
+									<td>${enrollment.enrollmentFinal}</td>
+									<td>${enrollment.enrollmentStudentSum}</td>
+									<td><b>${enrollment.enrollmentStudentGrade}</b></td>
+								</tr>
+							</c:forEach>
 						</table>
 
 					</div>
-
-
 
 				</div>
 
 			</div>
 		</div>
-		</div>
 	</main>
-
 
 	<%@ include file="/WEB-INF/layout/footer.jsp"%>
 
