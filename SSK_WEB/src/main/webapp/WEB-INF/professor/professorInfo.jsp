@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>학생 성적 관리 웹 - 교수자 정보 수정</title>
+<title>학생 성적 관리 웹 - 교수자 정보</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css" />
 </head>
@@ -48,7 +48,9 @@
 
 						<!-- 나의 강의 내역 컴포넌트 -->
 						<div class="page-title">나의 강의</div>
-						<a class="a-btn" href="">⏏️강의 추가</a>
+						<a class="a-btn" href="/toProfessorAddCourse.do
+						">⏏️강의
+							추가</a>
 
 						<table id="w-table">
 							<tr>
@@ -68,7 +70,8 @@
 									<c:forEach var="course" items="${courseList}">
 										<tr>
 											<td>${course.courseNum}</td>
-											<td><a class="a-btn" href="#">${course.courseName}</a></td>
+											<td><a class="a-btn"
+												href="/professorGetCourse.do?num=${course.courseNum}">${course.courseName}</a></td>
 											<td>${course.courseProfessorMajor}</td>
 											<td>${course.coursePoint}</td>
 										</tr>
@@ -82,22 +85,34 @@
 					</div>
 
 					<div class="grid-item">
-						<!-- 강의 문의 내역 컴포넌트 -->
-						<div class="page-title">강의 문의 내역</div>
+
+						<!-- 관리자 문의 내역 컴포넌트 -->
+						<div class="page-title">관리자 문의 내역</div>
 						<table id="w-table">
 							<tr>
 								<th>문의 번호</th>
+								<th>문의자 직책</th>
 								<th>문의자 이름</th>
 								<th>문의 제목</th>
 								<th>문의 날짜</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>이름이름</td>
-								<td><a class="a-btn" href="#">수업 질문</a></td>
-								<td>2024-10-02</td>
-							</tr>
+							<c:forEach var="board" items="${boardList}">
+								<tr>
+									<td>${board.boardNum}</td>
+									<td>${board.boardPosition}</td>
+									<!-- 문의자 직책 -->
+									<td>${board.boardName}</td>
+									<!-- 문의자 이름 -->
+									<td><a class="a-btn"
+										href="/professorGetBoard.do?num=${board.boardNum}">${board.boardTitle}</a></td>
+									<!-- 문의 제목 -->
+									<td>${board.boardDate}</td>
+									<!-- 문의 날짜 -->
+								</tr>
+							</c:forEach>
 						</table>
+
+
 					</div>
 
 				</div>

@@ -13,9 +13,9 @@ public class ProfessorEditInfoController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		System.out.println("교수자 정보 수정");
+		System.out.println("교수 정보 수정");
 		
-		// 수정할 자료 받기
+		// 수정된 점수들 받기
 		
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
@@ -35,6 +35,8 @@ public class ProfessorEditInfoController implements Controller {
 		// 다시 세션에 저장
 		session.setAttribute("session", profvo);
 		return "professor/professorInfo";
+		
+		
 	}
 
 }

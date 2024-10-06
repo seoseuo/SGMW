@@ -21,7 +21,11 @@ public class EnrollmentDAO {
 			+ "e.enrollmentMiddle, e.enrollmentFinal " + "FROM enrollment e "
 			+ "JOIN student s ON e.enrollmentStudentNum = s.studentNum " + "WHERE e.enrollmentCourseNum = ? "
 			+ "ORDER BY (e.enrollmentMiddle + e.enrollmentFinal) DESC";
+	private final String DELETE_ENROLLMENT = "DELETE FROM enrollment WHERE enrollmentCourseNum = ?";
 
+	private final String EDIT_ENROLLMENT = "UPDATE enrollment SET enrollmentMiddle = ?, enrollmentFinal = ? WHERE enrollmentCourseNum = ? AND enrollmentStudentNum = ?";
+
+	
 	public List<EnrollmentVO> getEnrollmentList(CourseVO covo) {
 		// TODO Auto-generated method stub
 
@@ -44,7 +48,7 @@ public class EnrollmentDAO {
 				envo.setEnrollmentFinal(rs.getInt("enrollmentFinal")); // 기말고사 성적 설정
 				envo.setEnrollmentStudentSum(envo.getEnrollmentMiddle(), envo.getEnrollmentFinal()); // 합계 설정
 				// 리스트에 객체 추가
-				enlist.add(envo); // enrollmentList는 EnrollmentVO 객체의 리스트
+				enlist.add(envo);
 
 			}
 
@@ -58,6 +62,51 @@ public class EnrollmentDAO {
 
 		return enlist;
 
+	}
+
+	public void deleteEnrollment(CourseVO covo) {
+		// TODO Auto-generated method stub
+		try {
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(DELETE_ENROLLMENT);
+
+			// 바인딩
+			stmt.setInt(1, covo.getCourseNum());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 해제
+			JDBCUtil.close(stmt, conn);
+		}
+
+	}
+
+	public void editEnrollment(EnrollmentVO envo) {
+		// TODO Auto-generated method stub
+		try {
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(EDIT_ENROLLMENT);
+
+			// 바인딩
+			stmt.setInt(1, envo.getEnrollmentMiddle());
+			stmt.setInt(2, envo.getEnrollmentFinal());
+			stmt.setInt(3, envo.getEnrollmentCourseNum());
+			stmt.setString(4, envo.getEnrollmentStudentNum());
+			
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 해제
+			JDBCUtil.close(stmt, conn);
+		}
 	}
 
 }

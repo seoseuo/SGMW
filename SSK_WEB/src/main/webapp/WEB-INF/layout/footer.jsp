@@ -11,6 +11,7 @@
 <script src="<%=request.getContextPath()%>/js/adminInsertStudent.js"></script>
 <script src="<%=request.getContextPath()%>/js/professorEditMyClassGrade.js"></script>
 <script src="<%=request.getContextPath()%>/js/editUser.js"></script>
+<script src="<%=request.getContextPath()%>/js/addCourse.js"></script>
 
 <!-- 각 클래스 import  -->
 

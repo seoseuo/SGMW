@@ -30,6 +30,11 @@ public class CourseDAO {
 			+ "JOIN professor p ON c.courseProfessorNum = p.professorNum WHERE courseNum = ?";
 	private final String SEARCH_COURSE = "SELECT c.courseNum, c.courseName, c.courseProfessorNum, c.coursePoint, p.professorName AS courseProfessorName, p.professorMajor AS courseProfessorMajor FROM course c JOIN professor p ON c.courseProfessorNum = p.professorNum WHERE courseName LIKE ?";
 
+	private final String ADD_COURSE = "INSERT INTO course (courseNum, courseName, courseProfessorNum, coursePoint) "
+			+ "VALUES ((SELECT IFNULL(MAX(courseNum), 0) + 1 FROM course), ?, ?, ?)";
+
+	private final String DELETE_COURSE = "DELETE FROM course WHERE courseNum = ?";
+
 	public List<CourseVO> getCourseList() {
 //		System.out.println("getCourseList()");
 
@@ -157,7 +162,7 @@ public class CourseDAO {
 				covo.setCourseProfessorName(rs.getString("courseProfessorName")); // 교수자 이름 설정
 				covo.setCourseProfessorMajor(rs.getString("courseProfessorMajor")); // 교수자 소속(전공) 설정
 				// 리스트에 객체 추가
-			    System.out.println(covo.getCourseName());
+
 				courseList.add(covo);
 			}
 
@@ -168,6 +173,47 @@ public class CourseDAO {
 		}
 
 		return courseList;
+	}
+
+	public void addCourse(CourseVO covo) {
+		try {
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(ADD_COURSE);
+
+			// 바인딩
+			stmt.setString(1, covo.getCourseName()); // 강의 이름
+			stmt.setString(2, covo.getCourseProfessorNum()); // 교수자 번호
+			stmt.setInt(3, covo.getCoursePoint()); // 강의 학점
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 해제
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+
+	public void deleteCourse(CourseVO covo) {
+		// TODO Auto-generated method stub
+		try {
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(DELETE_COURSE);
+
+			// 바인딩
+			stmt.setInt(1, covo.getCourseNum()); 
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 해제
+			JDBCUtil.close(stmt, conn);
+		}
 	}
 
 }
