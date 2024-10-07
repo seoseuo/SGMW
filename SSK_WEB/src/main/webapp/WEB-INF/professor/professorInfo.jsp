@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"
 	errorPage="errors/error.jsp"%>
 
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -41,16 +40,13 @@
 							</tr>
 							<tr>
 								<td><a
-									href="/toProfessorEditInfo.do?professorNum=${professor.professorNum}">📝수정
-										하기</a></td>
+									href="/toProfessorEditInfo.do?professorNum=${professor.professorNum}">📝수정하기</a></td>
 							</tr>
 						</table>
 
 						<!-- 나의 강의 내역 컴포넌트 -->
 						<div class="page-title">나의 강의</div>
-						<a class="a-btn" href="/toProfessorAddCourse.do
-						">⏏️강의
-							추가</a>
+						<a class="a-btn" href="/toProfessorAddCourse.do">⏏️강의 추가</a>
 
 						<table id="w-table">
 							<tr>
@@ -60,25 +56,16 @@
 								<th>강의 학점</th>
 							</tr>
 
-							<c:choose>
-								<c:when test="${empty courseList}">
-									<tr>
-										<td colspan="4" style="text-align: center;">등록된 강의가 없습니다.</td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="course" items="${courseList}">
-										<tr>
-											<td>${course.courseNum}</td>
-											<td><a class="a-btn"
-												href="/professorGetCourse.do?num=${course.courseNum}">${course.courseName}</a></td>
-											<td>${course.courseProfessorMajor}</td>
-											<td>${course.coursePoint}</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-
+							<c:forEach var="course" items="${courseList}">
+								<tr>
+									<td>${course.courseNum}</td>
+									<td><a class="a-btn"
+										href="/professorGetCourse.do?num=${course.courseNum}">${course.courseName}</a>
+									</td>
+									<td>${course.courseProfessorMajor}</td>
+									<td>${course.coursePoint}</td>
+								</tr>
+							</c:forEach>
 
 						</table>
 
@@ -87,11 +74,11 @@
 					<div class="grid-item">
 
 						<!-- 관리자 문의 내역 컴포넌트 -->
-						<div class="page-title">관리자 문의 내역</div>
+						<div class="page-title">강의 문의 내역</div>
 						<table id="w-table">
 							<tr>
 								<th>문의 번호</th>
-								<th>문의자 직책</th>
+								<th>문의자 학번</th>
 								<th>문의자 이름</th>
 								<th>문의 제목</th>
 								<th>문의 날짜</th>
@@ -99,7 +86,7 @@
 							<c:forEach var="board" items="${boardList}">
 								<tr>
 									<td>${board.boardNum}</td>
-									<td>${board.boardPosition}</td>
+									<td>${board.boardFromNum}</td>
 									<!-- 문의자 직책 -->
 									<td>${board.boardName}</td>
 									<!-- 문의자 이름 -->
@@ -118,7 +105,6 @@
 				</div>
 
 			</div>
-		</div>
 		</div>
 	</main>
 

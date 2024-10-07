@@ -21,11 +21,15 @@ public class EnrollmentDAO {
 			+ "e.enrollmentMiddle, e.enrollmentFinal " + "FROM enrollment e "
 			+ "JOIN student s ON e.enrollmentStudentNum = s.studentNum " + "WHERE e.enrollmentCourseNum = ? "
 			+ "ORDER BY (e.enrollmentMiddle + e.enrollmentFinal) DESC";
+
 	private final String DELETE_ENROLLMENT = "DELETE FROM enrollment WHERE enrollmentCourseNum = ?";
 
 	private final String EDIT_ENROLLMENT = "UPDATE enrollment SET enrollmentMiddle = ?, enrollmentFinal = ? WHERE enrollmentCourseNum = ? AND enrollmentStudentNum = ?";
 
-	
+	private final String INSERT_ENROLLMENT = "INSERT INTO enrollment (enrollmentCourseNum, enrollmentStudentNum, enrollmentMiddle, enrollmentFinal) VALUES (?, ?, 0, 0)";
+
+	private final String DELETE_STUDENT_COURSE = "DELETE FROM ENROLLMENT WHERE enrollmentStudentNum = ? AND enrollmentCourseNum = ?";
+
 	public List<EnrollmentVO> getEnrollmentList(CourseVO covo) {
 		// TODO Auto-generated method stub
 
@@ -97,7 +101,6 @@ public class EnrollmentDAO {
 			stmt.setInt(2, envo.getEnrollmentFinal());
 			stmt.setInt(3, envo.getEnrollmentCourseNum());
 			stmt.setString(4, envo.getEnrollmentStudentNum());
-			
 
 			stmt.executeUpdate();
 
@@ -106,6 +109,50 @@ public class EnrollmentDAO {
 		} finally {
 			// 자원 해제
 			JDBCUtil.close(stmt, conn);
+		}
+	}
+
+	public void insertStudent(EnrollmentVO envo) {
+		// TODO Auto-generated method stub
+		try {
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(INSERT_ENROLLMENT);
+
+			// 바인딩
+			stmt.setInt(1, envo.getEnrollmentCourseNum());
+			stmt.setString(2, envo.getEnrollmentStudentNum());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 해제
+			JDBCUtil.close(stmt, conn);
+
+		}
+	}
+
+	public void deleteStudentCorse(EnrollmentVO envo) {
+		// TODO Auto-generated method stub
+		try {
+			conn = JDBCUtil.getConnection();
+
+			stmt = conn.prepareStatement(DELETE_STUDENT_COURSE);
+
+			// 바인딩
+			stmt.setString(1, envo.getEnrollmentStudentNum());
+			stmt.setInt(2, envo.getEnrollmentCourseNum());
+			
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 해제
+			JDBCUtil.close(stmt, conn);
+
 		}
 	}
 

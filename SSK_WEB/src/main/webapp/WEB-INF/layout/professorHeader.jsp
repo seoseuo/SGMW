@@ -10,7 +10,7 @@
       <a href="/toProfessorMain.do" class="header-item">🎓</a>
       <a href="/professorInfo.do" class="header-item">내 정보</a>
       <a href="/professorGetCourseList.do" class="header-item">개설 강의</a>
-      <a href="/toProfessorGetAdminBoardList.do" class="header-item">관리자 문의</a>
+      <a href="/professorGetAdminBoardList.do" class="header-item">관리자 문의</a>
       <a href="/logout.do" class="header-item">로그아웃</a>
   </div>    
 </header>

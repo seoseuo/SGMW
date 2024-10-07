@@ -22,6 +22,7 @@ public class StudentDAO {
 	private final String SEARCH_STUDENT_LIST = "SELECT * FROM STUDENT WHERE studentNum LIKE ? AND studentAdminNum = ?";
 	private final String ADMIN_INSERT_STUDENT = "INSERT INTO STUDENT (studentNum, studentName, studentPhone, studentMajor, studentAdminNum, studentPassword) VALUES (?, ?, ?, ?, ?, ?)";
 	private final String ADMIN_DELETE_STUDENT = "DELETE FROM STUDENT WHERE studentNum = ?";
+	private final String EDIT_STUDENT = "UPDATE student SET studentName = ?, studentPhone = ? WHERE studentNum = ?";
 
 	public List<StudentVO> getStudentList(AdminVO adminVo) {
 
@@ -89,7 +90,6 @@ public class StudentDAO {
 				getStvo.setStudentPhone(rs.getString("studentPhone"));
 				getStvo.setStudentMajor(rs.getString("studentMajor"));
 				getStvo.setStudentAdminNum(rs.getString("studentAdminNum"));
-
 
 				System.out.println(getStvo.getStudentNum() + ", " + getStvo.getStudentName());
 			}
@@ -186,9 +186,9 @@ public class StudentDAO {
 			System.out.println(stmt.executeUpdate() + "명의 학생 등록 완료");
 
 		} catch (SQLException e) {
-			// 학번 중복일 때 
+			// 학번 중복일 때
 			e.printStackTrace();
-			throw e; 
+			throw e;
 		} finally {
 			// 자원 해제
 			JDBCUtil.close(stmt, conn);
@@ -213,4 +213,23 @@ public class StudentDAO {
 
 	}
 
+	public void editStudent(StudentVO studentvo) {
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(EDIT_STUDENT);
+
+			stmt.setString(1, studentvo.getStudentName()); // 학생 이름
+			stmt.setString(2, studentvo.getStudentPhone()); // 학생 전화번호
+			stmt.setString(3, studentvo.getStudentNum()); // 학생 학번
+
+			// 쿼리 실행
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 해제
+			JDBCUtil.close(stmt, conn);
+		}
+	}
 }

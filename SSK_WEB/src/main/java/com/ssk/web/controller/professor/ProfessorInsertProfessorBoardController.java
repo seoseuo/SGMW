@@ -13,7 +13,7 @@ import com.ssk.biz.professor.ProfessorDAO;
 import com.ssk.biz.professor.ProfessorVO;
 import com.ssk.web.controller.Controller;
 
-public class ProfessorInsertBoardController implements Controller {
+public class ProfessorInsertProfessorBoardController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -52,7 +52,7 @@ public class ProfessorInsertBoardController implements Controller {
         BoardDAO bdao = new BoardDAO();
         bdao.insertBoard(bdvo);
 		
-		return "/toProfessorGetAdminBoardList.do";
+		return "/professorGetAdminBoardList.do";
 	}
 
 }

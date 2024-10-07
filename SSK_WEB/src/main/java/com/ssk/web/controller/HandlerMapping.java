@@ -39,16 +39,29 @@ import com.ssk.web.controller.professor.ProfessorGetCourseController;
 import com.ssk.web.controller.professor.ProfessorGetCouseListController;
 import com.ssk.web.controller.professor.ProfessorGetStudentController;
 import com.ssk.web.controller.professor.ProfessorInfoController;
-import com.ssk.web.controller.professor.ProfessorInsertBoardController;
+import com.ssk.web.controller.professor.ProfessorInsertProfessorBoardController;
 import com.ssk.web.controller.professor.ProfessorSearchCouseController;
 import com.ssk.web.controller.professor.ToProfessorAddCourseController;
 import com.ssk.web.controller.professor.ToProfessorEditCouseGradeController;
 import com.ssk.web.controller.professor.ToProfessorEditInfoController;
-import com.ssk.web.controller.professor.ToProfessorGetAdminBoardListController;
+import com.ssk.web.controller.professor.ProfessorGetAdminBoardListController;
 import com.ssk.web.controller.professor.ToProfessorLoginController;
 import com.ssk.web.controller.professor.ToProfessorMainController;
+import com.ssk.web.controller.student.ToStudentEditInfoController;
 import com.ssk.web.controller.professor.professorDeleteCourseController;
+import com.ssk.web.controller.student.StudentDeleteCourseController;
+import com.ssk.web.controller.student.StudentEditInfoController;
+import com.ssk.web.controller.student.StudentGetAdminBoardListController;
+import com.ssk.web.controller.student.StudentGetBoardController;
+import com.ssk.web.controller.student.StudentGetCourseController;
+import com.ssk.web.controller.student.StudentGetCourseListController;
+import com.ssk.web.controller.student.StudentGetProfessorBoardListController;
+import com.ssk.web.controller.student.StudentInfoController;
+import com.ssk.web.controller.student.StudentInsertBoardController;
+import com.ssk.web.controller.student.StudentInsertCourseController;
+import com.ssk.web.controller.student.StudentSearchCourseController;
 import com.ssk.web.controller.student.ToStudentLoginController;
+import com.ssk.web.controller.student.ToStudentMainController;
 
 public class HandlerMapping {
 
@@ -151,11 +164,39 @@ public class HandlerMapping {
 		// 교수자 강의 수정
 		mappings.put("/professorEditCourseGrade.do", new ProfessorEditCourseGradeController());
 		// 교수자 관리자 문의 이동
-		mappings.put("/toProfessorGetAdminBoardList.do", new ToProfessorGetAdminBoardListController());
+		mappings.put("/professorGetAdminBoardList.do", new ProfessorGetAdminBoardListController());
 		// 교수자 관리자 문의 상세 이동
 		mappings.put("/professorGetBoard.do", new ProfessorGetBoardController());
 		// 교수자 관리자 문의 상세 이동
-		mappings.put("/professorInsertBoard.do", new ProfessorInsertBoardController());
+		mappings.put("/professorInsertBoard.do", new ProfessorInsertProfessorBoardController());
+
+		// 학생 메인
+		mappings.put("/toStudentMain.do", new ToStudentMainController());
+		// 학생 메인
+		mappings.put("/studentInfo.do", new StudentInfoController());
+		// 학생 정보 수정 이동
+		mappings.put("/toStudentEditInfo.do", new ToStudentEditInfoController());
+		// 학생 정보 수정
+		mappings.put("/studentEditInfo.do", new StudentEditInfoController());
+		// 학생 강의 목록
+		mappings.put("/studentGetCourseList.do", new StudentGetCourseListController());
+		// 학생 강의 상세 목록
+		mappings.put("/studentGetCourse.do", new StudentGetCourseController());
+		// 학생 강의 검색
+		mappings.put("/studentSearchCourse.do", new StudentSearchCourseController());
+		// 학생 수강 신청
+		mappings.put("/studentInsertCourse.do", new StudentInsertCourseController());
+		// 학생 수강 철회
+		mappings.put("/studentDeleteCourse.do", new StudentDeleteCourseController());
+		// 학생 수강 철회
+		mappings.put("/studentGetProfessorBoardList.do", new StudentGetProfessorBoardListController());
+		// 학생 문의 상세 조회
+		mappings.put("/studentGetBoard.do", new StudentGetBoardController());
+		// 학생 관리자 문의 리스트
+		mappings.put("/studentGetAdminBoardList.do", new StudentGetAdminBoardListController());
+		// 학생 문의 작성
+		mappings.put("/studentInsertBoard.do", new StudentInsertBoardController());
+
 	}
 
 	public Controller getController(String path) {

@@ -33,11 +33,9 @@ public class ProfessorInfoController implements Controller {
 		List<CourseVO> colist = codao.getCourseList(profvo);
 		request.setAttribute("courseList", colist);
 		
-		// 강의 문의 내역 가져오기
+		//  내가 받은 강의 문의 내역 가져오기
 		
 		BoardDAO bdao = new BoardDAO();
-		
-		
 		List<BoardVO> bdlist = bdao.getBoardList(profvo);
 		request.setAttribute("boardList", bdlist);
 
