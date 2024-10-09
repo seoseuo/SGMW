@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         midtermInputs.forEach(midtermInput => {
             const midterm = midtermInput.value;
             const midtermWarn = document.getElementById(`middleGrade_warn_${midtermInput.name.split('_')[1]}`);
-            if (midterm === '') {
+            if (midterm === "") {
                 midtermWarn.textContent = '* 점수를 입력하세요.';
                 isValid = false;
                 if (!focusSet) {

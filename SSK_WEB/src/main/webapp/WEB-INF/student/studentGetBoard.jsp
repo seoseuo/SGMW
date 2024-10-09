@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>정보 수정</title>
+<title>학생 성적 관리 웹 - 강의 정보</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css" />
 </head>

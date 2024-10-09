@@ -31,7 +31,7 @@ public class StudentEditInfoController implements Controller {
 
 		// 다시 세션에 저장
 		session.setAttribute("student", studentvo);
-		return "student/studentInfo";
+		return "/studentInfo.do";
 
 	}
 

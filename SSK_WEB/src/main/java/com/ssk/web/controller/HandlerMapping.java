@@ -125,7 +125,7 @@ public class HandlerMapping {
 		// 교수자 정보 삭제
 		mappings.put("/adminDeleteProfessor.do", new AdminDeleteProfessorController());
 		// 교수자 정보 삭제
-		mappings.put("/adminDeleteStudent.do", new AdminDeleteProfessorController());
+		mappings.put("/adminDeleteStudent.do", new AdminDeletStudentContoller());
 		// 강의 목록
 		mappings.put("/adminGetCourseList.do", new AdminGetCourseListController());
 		// 강의 정보

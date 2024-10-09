@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>강의 목록</title>
+<title>학생 성적 관리 웹 - 관리자 문의 목록</title>
 <link rel="stylesheet" href="../../../css/style.css" />
 </head>
 
@@ -19,8 +19,8 @@
 					<div class="grid-item">
 
 						<!-- 내 정보 컴포넌트 -->
-						<div class="page-title">강의 문의</div>
-						<form action="/studentInseartBoard.do" method="POST">
+						<div class="page-title">관리자 문의</div>
+						<form action="/studentInsertBoard.do" method="POST">
 							<br> <label for="title"><b>제목</b></label><br> <input
 								class="input-login" type="text" id="title" name="title"
 								placeholder="제목을 입력하세요."> <br>

@@ -21,14 +21,14 @@ public class AdminDeleteProfessorController implements Controller {
 
 		System.out.println("학생 정보 삭제, " + num);
 		// 객체 설정
-		StudentVO stvo = new StudentVO();
-		stvo.setStudentNum(num); // Assuming 'setStudentNum' is the correct method
+		ProfessorVO stvo = new ProfessorVO();
+		stvo.setProfessorNum(num); 
 
 		// db연동
-		StudentDAO stdao = new StudentDAO();
-		stdao.adminDeleteStudent(stvo); // Make sure this method is adapted to handle StudentVO
+		ProfessorDAO profdao = new ProfessorDAO();
+		profdao.adminDeleteProfessor(stvo); 
 
-		return "/adminGetStudentList.do";
+		return "/adminGetProfessorList.do";
 
 	}
 

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>강의 성적 입력</title>
+<title>학생 성적 관리 웹 - 강의 성적 입력</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css" />
 </head>
@@ -76,13 +76,19 @@
 												<c:when
 													test="${enrollment.enrollmentStudentNum == studentNum}">
 													<td><input class="input-edit-grade" type="text"
-														id="middleGrade" name="middleGrade"
-														value="${enrollment.enrollmentMiddle}"> <br>
-														<span class="input_warn" id="middleGrade_warn"></span></td>
+														id="middleGrade"
+														name="middleGrade_${enrollment.enrollmentStudentNum}"
+														value="${enrollment.enrollmentMiddle}"><br> <span
+														class="input_warn"
+														id="middleGrade_warn_${enrollment.enrollmentStudentNum}"></span></td>
+
 													<td><input class="input-edit-grade" type="text"
-														id="finalGrade" name="finalGrade"
-														value="${enrollment.enrollmentFinal}"> <br> <span
-														class="input_warn" id="finalGrade_warn"></span></td>
+														id="finalGrade"
+														name="finalGrade_${enrollment.enrollmentStudentNum}"
+														value="${enrollment.enrollmentFinal}"><br> <span
+														class="input_warn"
+														id="finalGrade_warn_${enrollment.enrollmentStudentNum}"></span></td>
+
 													<td>${enrollment.enrollmentStudentSum}</td>
 													<td><b>${enrollment.enrollmentStudentGrade}</b></td>
 													<td><input type="submit" value="✅입력 완료"></td>

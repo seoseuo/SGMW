@@ -34,7 +34,7 @@ public class AdminEditInfoController implements Controller {
 		session.setAttribute("admin", vo);
 		
 		
-		return "admin/adminInfo";
+		return "/adminInfo.do";
 		
 		
 	}

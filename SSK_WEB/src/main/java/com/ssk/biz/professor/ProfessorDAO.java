@@ -23,7 +23,8 @@ public class ProfessorDAO {
 	private final String EDIT_PROFESSOR = "UPDATE PROFESSOR SET professorName = ?, professorPhone = ? WHERE professorNum = ?";
 	private final String ADMIN_INSERT_PROFESSOR = "INSERT INTO PROFESSOR (professorNum, professorName, professorPhone, professorMajor, professorAdminNum, professorPassword) VALUES (?, ?, ?, ?, ?, ?)";
 	private final String SEARCH_PROFESSOR_LIST = "SELECT * FROM PROFESSOR WHERE professorNum LIKE ? AND professorAdminNum = ?";
-	private final String ADMIN_DELETE_PROFESSOR = "DELETE FROM PROFESSOR WHERE professorNum = ?";
+	private final String ADMIN_DELETE_PROFESSOR = "DELETE FROM BOARD WHERE boardFromNum = ? OR boardToNum = ?; "
+			+ "DELETE FROM COURSE WHERE courseProfessorNum = ?; " + "DELETE FROM PROFESSOR WHERE professorNum = ?;";
 
 	// 교수자 목록 가져오기
 	public List<ProfessorVO> getProfessorList(AdminVO adminVo) {
@@ -183,10 +184,10 @@ public class ProfessorDAO {
 			System.out.println(stmt.executeUpdate() + "명의 교수자 등록 완료");
 
 		} catch (SQLException e) {
-			
-			// 교번 중복일 때 
+
+			// 교번 중복일 때
 			e.printStackTrace();
-			throw e; 
+			throw e;
 
 		} finally {
 			JDBCUtil.close(stmt, conn);
@@ -199,6 +200,9 @@ public class ProfessorDAO {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(ADMIN_DELETE_PROFESSOR);
 			stmt.setString(1, profvo.getProfessorNum());
+			stmt.setString(2, profvo.getProfessorNum());
+			stmt.setString(3, profvo.getProfessorNum());
+			stmt.setString(4, profvo.getProfessorNum());
 
 			System.out.println("삭제할 교수 번호: " + profvo.getProfessorNum());
 
@@ -229,6 +233,6 @@ public class ProfessorDAO {
 		} finally {
 			JDBCUtil.close(stmt, conn);
 		}
-		
+
 	}
 }

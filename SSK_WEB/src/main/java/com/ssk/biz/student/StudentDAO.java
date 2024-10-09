@@ -21,7 +21,9 @@ public class StudentDAO {
 	private final String ADMIN_EDIT_STUDENT = "UPDATE STUDENT SET studentName = ?, studentPhone = ?, studentMajor = ? WHERE studentNum = ?";
 	private final String SEARCH_STUDENT_LIST = "SELECT * FROM STUDENT WHERE studentNum LIKE ? AND studentAdminNum = ?";
 	private final String ADMIN_INSERT_STUDENT = "INSERT INTO STUDENT (studentNum, studentName, studentPhone, studentMajor, studentAdminNum, studentPassword) VALUES (?, ?, ?, ?, ?, ?)";
-	private final String ADMIN_DELETE_STUDENT = "DELETE FROM STUDENT WHERE studentNum = ?";
+	private final String ADMIN_DELETE_STUDENT = "DELETE FROM BOARD WHERE boardFromNum = ?; "
+			+ "DELETE FROM ENROLLMENT WHERE enrollmentStudentNum = ?; " + "DELETE FROM STUDENT WHERE studentNum = ?";
+
 	private final String EDIT_STUDENT = "UPDATE student SET studentName = ?, studentPhone = ? WHERE studentNum = ?";
 
 	public List<StudentVO> getStudentList(AdminVO adminVo) {
@@ -200,6 +202,8 @@ public class StudentDAO {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(ADMIN_DELETE_STUDENT);
 			stmt.setString(1, stvo.getStudentNum());
+			stmt.setString(2, stvo.getStudentNum());
+			stmt.setString(3, stvo.getStudentNum());
 
 			System.out.println("삭제할 학생 번호: " + stvo.getStudentNum());
 
@@ -224,7 +228,7 @@ public class StudentDAO {
 
 			// 쿼리 실행
 			stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

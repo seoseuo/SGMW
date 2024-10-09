@@ -34,6 +34,7 @@ public class StudentGetCourseController implements Controller {
 		EnrollmentDAO endao = new EnrollmentDAO();
 		List<EnrollmentVO> enList = endao.getEnrollmentList(covo);
 
+		
 		// 학점 배정
 		EnrollmentVO envo = new EnrollmentVO();
 		envo.assignGrade(enList);

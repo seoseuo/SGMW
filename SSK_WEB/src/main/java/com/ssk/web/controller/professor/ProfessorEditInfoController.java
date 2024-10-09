@@ -34,7 +34,7 @@ public class ProfessorEditInfoController implements Controller {
 		
 		// 다시 세션에 저장
 		session.setAttribute("session", profvo);
-		return "professor/professorInfo";
+		return "/professorInfo.do";
 		
 		
 	}

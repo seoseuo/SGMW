@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>강의 목록</title>
+<title>학생 성적 관리 웹 - 강의 정보</title>
 <link rel="stylesheet" href="../../../css/style.css" />
 </head>
 
@@ -46,7 +46,14 @@
 								<th>학생 번호</th>
 								<th>학생 이름</th>
 								<th>학생 소속 (전공)</th>
-	
+								<!-- enrollmentStudentNum과 studentNum이 같을 때만 중간, 기말, 총점, 학점 열을 표시 -->
+								<c:if
+									test="${enrollmentList[0].enrollmentStudentNum == student.studentNum}">
+									<th>중간</th>
+									<th>기말</th>
+									<th>총점</th>
+									<th>학점</th>
+								</c:if>
 							</tr>
 
 							<c:forEach var="enrollment" items="${enrollmentList}">
@@ -54,9 +61,18 @@
 									<td>${enrollment.enrollmentStudentNum}</td>
 									<td>${enrollment.enrollmentStudentName}</td>
 									<td>${enrollment.enrollmentStudentMajor}</td>
+
+									<c:if
+										test="${enrollment.enrollmentStudentNum == student.studentNum}">
+										<td>${enrollment.enrollmentMiddle}</td>
+										<td>${enrollment.enrollmentFinal}</td>
+										<td>${enrollment.enrollmentStudentSum}</td>
+										<td>${enrollment.enrollmentStudentGrade}</td>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</table>
+
 
 					</div>
 
